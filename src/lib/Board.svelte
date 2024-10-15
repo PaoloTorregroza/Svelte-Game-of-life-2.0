@@ -1,24 +1,12 @@
 <script lang="ts">
-    import { board_width, board_height, running } from "../store";
+    import { boardWidth, boardHeight, running } from "../store";
     import Cell from "./Cell.svelte";
     import { Cell as CellModel } from "./models";
-    import { BoardManager } from "./utils/BoardManager";
 
     export let board: CellModel[] = [];
 
-    const boardManager = new BoardManager(false);
-
-    // Listen to changes on running store
-    running.subscribe((val) => {
-        if (val) {
-            boardManager.nextBoard();
-        } else {
-            console.log("stop");
-        }
-    });
-
     function getIndex(row: number, cell: number): number {
-        return row * $board_width + cell;
+        return row * $boardWidth + cell;
     }
 
     function switchState(event: CustomEvent) {
@@ -30,9 +18,9 @@
 </script>
 
 <div class="board-container">
-    {#each { length: $board_height } as _, row ("row-" + row)}
+    {#each { length: $boardHeight } as _, row ("row-" + row)}
         <div class="board-row">
-            {#each { length: $board_width } as _, cell ("cell-" + cell)}
+            {#each { length: $boardWidth } as _, cell ("cell-" + cell)}
                 <Cell
                     on:switchState={switchState}
                     cell_index={getIndex(row, cell)}

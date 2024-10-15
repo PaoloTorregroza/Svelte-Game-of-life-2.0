@@ -7,24 +7,24 @@
     import { createEventDispatcher } from "svelte";
     import {
         running,
-        torus_enabled,
-        board_width,
-        board_height,
-        alive_color,
-        dead_color,
+        torusEnabled,
+        boardWidth,
+        boardHeight,
+        aliveColor,
+        deadColor,
     } from "../store";
 
     const dispatch = createEventDispatcher();
 
-    let width = $board_width;
-    let height = $board_height;
+    let width = $boardWidth;
+    let height = $boardHeight;
 
     // Width and height is limted to 101 to prevent bad performance.
     function updateWidth(event: { currentTarget: HTMLInputElement }) {
         const value = (event.currentTarget as HTMLInputElement).value;
         let event_value = parseInt(value) || 0;
         let val = event_value > 101 ? 101 : event_value;
-        board_width.set(val);
+        boardWidth.set(val);
         width = val;
     }
 
@@ -32,7 +32,7 @@
         const value = (event.currentTarget as HTMLInputElement).value;
         let event_value = parseInt(value) || 0;
         let val = event_value > 101 ? 101 : event_value;
-        board_height.set(val);
+        boardHeight.set(val);
         height = val;
     }
 </script>
@@ -61,17 +61,17 @@
     </div>
     <div class="settings-element">
         <p class="settings-label">Cell dead color:</p>
-        <input class="settings-input" bind:value={$dead_color} type="color" />
+        <input class="settings-input" bind:value={$deadColor} type="color" />
     </div>
     <div class="settings-element">
         <p class="settings-label">Cell alive color:</p>
-        <input class="settings-input" bind:value={$alive_color} type="color" />
+        <input class="settings-input" bind:value={$aliveColor} type="color" />
     </div>
     <div class="settings-element">
         <p class="settings-label">Torus enabled:</p>
         <input
             class="settings-input"
-            bind:value={$torus_enabled}
+            bind:value={$torusEnabled}
             type="checkbox"
         />
     </div>

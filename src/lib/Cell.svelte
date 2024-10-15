@@ -1,6 +1,6 @@
 <script lang="ts">
     import { createEventDispatcher } from "svelte";
-    import { alive_color, dead_color } from "../store";
+    import { aliveColor, deadColor } from "../store";
     import { Cell } from "./models";
 
     export let cell: Cell;
@@ -17,8 +17,8 @@
     on:click={switchState}
     class="cell"
     style={cell.alive
-        ? "background-color: " + $alive_color
-        : "background-color: " + $dead_color}
+        ? "background-color: " + $aliveColor
+        : "background-color: " + $deadColor}
 >
 </button>
 
