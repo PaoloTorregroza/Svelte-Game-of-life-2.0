@@ -1,1 +1,0 @@
-Deployed to [Github pages](https://paolotorregroza.github.io/Svelte-Game-of-life-2.0/)
