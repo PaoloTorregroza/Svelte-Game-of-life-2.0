@@ -91,6 +91,13 @@
     >
         Pause
     </button>
+    <button class="controll-button"
+        ><a
+            target="_blank"
+            href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+            >How to play</a
+        ></button
+    >
 </div>
 
 <style>
@@ -98,6 +105,7 @@
         display: flex;
         align-items: center;
         flex-wrap: wrap;
+        gap: 12px;
     }
 
     .settings-element {
