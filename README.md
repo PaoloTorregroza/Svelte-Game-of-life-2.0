@@ -1,1 +1,1 @@
-Deployed to [Github pages](https://paolotorregroza.github.io/Svelte-Game-of-life-2.0/){:target="_blank"}
+Deployed to [Github pages](https://paolotorregroza.github.io/Svelte-Game-of-life-2.0/)
