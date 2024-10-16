@@ -81,9 +81,9 @@ export default class BoardManager {
             if (
                 this.torusEnabled ||
                 neighbour.x >= 0 &&
-                neighbour.y < this.boardWidth &&
+                neighbour.y < this.boardHeight - 1 &&
                 neighbour.y >= 0 &&
-                neighbour.x < this.boardHeight
+                neighbour.x < this.boardWidth - 1
             ) {
                 if (this.torusEnabled) {
                     let coords = this.calculateTorus(neighbour);
@@ -93,6 +93,7 @@ export default class BoardManager {
                 }
             }
         }
+
         // Top right corner clockwise to bottom left corner
         for (const neighbour of validNeighbourIndexes) {
             neighbours.push(this.board[neighbour])
@@ -102,20 +103,20 @@ export default class BoardManager {
     }
 
     private getCellXY(pos: number): Coordinates {
-        const y = pos % this.boardWidth;
-        const x = Math.floor(pos / this.boardWidth);
+        const x = pos % this.boardWidth;
+        const y = Math.floor(pos / this.boardWidth);
         return { x, y };
     }
 
     private getCellIndex(x: number, y: number): number {
-        return x * this.boardWidth + y;
+        return y * (this.boardWidth) + x;
     }
 
     private calculateTorus({ x, y }: Coordinates): Coordinates {
         let coords = { x, y };
 
         if (x < 0) {
-            coords.x = this.boardWidth;
+            coords.x = this.boardWidth - 1;
         }
 
         if (x >= this.boardWidth) {
@@ -123,7 +124,7 @@ export default class BoardManager {
         }
 
         if (y < 0) {
-            coords.y = this.boardHeight;
+            coords.y = this.boardHeight - 1;
         }
 
         if (y >= this.boardHeight) {
